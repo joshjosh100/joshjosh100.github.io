@@ -19,7 +19,7 @@
 		<script type="text/x-handlebars-template" id='text-template'>
 			<table cellspacing='12'>
 				<tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
-					{{#each data}}
+					{{#each rows}}
 					<tr><td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td></tr>
 					{{/each}}
 			</table>
@@ -46,8 +46,8 @@
 							var source   = document.getElementById('text-template').innerHTML;  // get template text
 							var template = Handlebars.compile(source);                          // compile the template
 							var html = template(data);   
-						
-							document.getElementById("result").innerHTML = html;
+							var compiledHtml = html({ rows: data })
+							document.getElementById("result").innerHTML = compiledHtml;
 						}
 						else {
 							document.getElementById("result").innerHTML = "There was an error.";
@@ -70,8 +70,8 @@
 							var source   = document.getElementById('text-template').innerHTML;  // get template text
 							var template = Handlebars.compile(source);                          // compile the template
 							var html = template(data);   
-						
-							document.getElementById("result").innerHTML = html;
+							var compiledHtml = html({ rows: data })
+							document.getElementById("result").innerHTML = compiledHtml;
 						}
 						else {
 							document.getElementById("result").innerHTML = "There was an error.";

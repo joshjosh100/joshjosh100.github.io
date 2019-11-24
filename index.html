@@ -46,8 +46,8 @@
 						if (request.status == 200) {
 							var source   = document.getElementById('text-template').innerHTML;  // get template text
 							var template = Handlebars.compile(source);                          // compile the template
-							var html = template(data);   
-							var compiledHtml = html({ rows: data })
+							   
+							var compiledHtml = template({ rows: data })
 							document.getElementById("result").innerHTML = compiledHtml;
 						}
 						else {
@@ -70,8 +70,8 @@
 						if (request.status == 200) {
 							var source   = document.getElementById('text-template').innerHTML;  // get template text
 							var template = Handlebars.compile(source);                          // compile the template
-							var html = template(data);   
-							var compiledHtml = html({ rows: data })
+							   
+							var compiledHtml = template({ rows: data })
 							document.getElementById("result").innerHTML = compiledHtml;
 						}
 						else {

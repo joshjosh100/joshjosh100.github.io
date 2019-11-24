@@ -21,7 +21,8 @@
 
                 
                 var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
-                var data = x;
+                var data = x.filter(data[i].major});
+                
                 for(i = 0; i < data.length; i++){
                   if (data[i].major == "CIT"){
                     data[i].pop(); 

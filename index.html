@@ -16,15 +16,15 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
 	
 		<!-- template -->
-		<script type="text/x-handlebars-template" id="text-template">
-		 <table cellspacing='12'>
-		  <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
-				{{#each rows}}
-					 <tr>
-						<td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
-					 </tr>
-				{{/each}}
-		  </table>
+		<script type="text/x-handlebars-template" id='text-template'>
+			<table cellspacing='12'>
+				<tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
+					{{#each rows}}
+						<tr>
+							<td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
+						</tr>
+					{{/each}}
+			</table>
 		</script>
 	  
 	  
@@ -39,8 +39,8 @@
 					request.onload = function() {                       // when the data comes back...
 
 						
-						var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
-						var data = x;
+						var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+						
 						
 						
 						
@@ -49,10 +49,10 @@
 							   var template = Handlebars.compile(source);                          // compile the template
 							   var html = template(data);   
 						
-							 document.querySelector('#result').innerHTML = contents;
+							 document.getElementById("result").innerHTML = contents;
 						}
 						else {
-							document.querySelector('#result').innerHTML = "There was an error.";
+							document.getElementById("result").innerHTML = "There was an error.";
 						}
 				  }
 				  request.send(null);
@@ -65,8 +65,8 @@
 					request.onload = function() {                       // when the data comes back...
 
 						
-						var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
-						var data = x;
+						var data  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+						
 						
 						
 						
@@ -75,10 +75,10 @@
 							   var template = Handlebars.compile(source);                          // compile the template
 							   var html = template(data);   
 						
-							 document.querySelector('#result').innerHTML = compiledTemplateText({ rows: data });
+							 document.getElementById("result").innerHTML = compiledTemplateText({ rows: data });
 						}
 						else {
-							document.querySelector('#result').innerHTML = "There was an error.";
+							document.getElementById("result").innerHTML = "There was an error.";
 						}
 				  }
 				  request.send(null);

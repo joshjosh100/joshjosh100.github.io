@@ -45,11 +45,11 @@
 						
 						
 						if (request.status == 200) {
-							   var source   = document.getElementById('text-template').innerHTML;  // get template text
-							   var template = Handlebars.compile(source);                          // compile the template
-							   var html = template(data);   
+							var source   = document.getElementById('text-template').innerHTML;  // get template text
+							var template = Handlebars.compile(source);                          // compile the template
+							var html = template(data);   
 						
-							 document.getElementById("result").innerHTML = contents;
+							document.getElementById("result").innerHTML = html;
 						}
 						else {
 							document.getElementById("result").innerHTML = "There was an error.";
@@ -71,11 +71,11 @@
 						
 						
 						if (request.status == 200) {
-							   var source   = document.getElementById('text-template').innerHTML;  // get template text
-							   var template = Handlebars.compile(source);                          // compile the template
-							   var html = template(data);   
+							var source   = document.getElementById('text-template').innerHTML;  // get template text
+							var template = Handlebars.compile(source);                          // compile the template
+							var html = template(data);   
 						
-							 document.getElementById("result").innerHTML = compiledTemplateText({ rows: data });
+							document.getElementById("result").innerHTML = html;
 						}
 						else {
 							document.getElementById("result").innerHTML = "There was an error.";

@@ -45,7 +45,8 @@
 						
 						
 						if (request.status == 200) {
-							var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+							var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+							var data = x.filter(function(x){return x.major == "BUS"})
 							var source   = document.getElementById('text-template').innerHTML;  // get template text
 							var template = Handlebars.compile(source);                          // compile the template
 							   
@@ -69,7 +70,8 @@
 						
 						
 						if (request.status == 200) {
-							var data  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+							var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+							var data = x.filter(function(x){return x.major == "BUS"})
 							var source   = document.getElementById('text-template').innerHTML;  // get template text
 							var template = Handlebars.compile(source);                          // compile the template
 							   

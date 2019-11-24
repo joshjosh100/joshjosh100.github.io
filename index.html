@@ -9,67 +9,80 @@
      <input type="button" id='btnCIT' value="Get CIT Student Scores">
      <input type="button" id='btnBUS' value="Get BUS Student Scores">
      <div id="result"></div>   <!-- data will be displayed here -->
- 
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+	
+	<!-- template -- -->
+    <script type="text/x-handlebars-template" id="tableTemplate">
+     <table cellspacing='12'>
+      <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
+            {{#each rows}}
+                 <tr>
+                    <td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
+                 </tr>
+            {{/each}}
+      </table>
+    </script>
   
-<script>
-   document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
-        document.querySelector('#btnCIT').onclick = function() {      // attach event handler to button
-            var request = new XMLHttpRequest();
-            request.open('GET', 'cit5students.json');                 // GET request for data
   
-            request.onload = function() {                       // when the data comes back...
+  
+	<script>
+		//CIT button
+	   document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
+			document.querySelector('#btnCIT').onclick = function() {      // attach event handler to button
+				var request = new XMLHttpRequest();
+				request.open('GET', 'cit5students.json');                 // GET request for data
+	  
+				request.onload = function() {                       // when the data comes back...
 
-                
-                var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
-                var data = x;
-                
-                
-                if (request.status == 200) {
-                     var contents = "<table cellspacing='4'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
-                     for(i = 0; i < data.length; i++) {         // generate the HTML table
-                         if(data[i].major == "CIT"){
-                            contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
-                         }                     
-                     }
-                     contents += "</table>";
-                
-                     document.querySelector('#result').innerHTML = contents;
-                }
-                else {
-                    document.querySelector('#result').innerHTML = "There was an error.";
-                }
-          }
-          request.send(null);
-     };
-     document.querySelector('#btnBUS').onclick = function() {      // attach event handler to button
-            var request = new XMLHttpRequest();
-            request.open('GET', 'cit5students.json');                 // GET request for data
-  
-            request.onload = function() {                       // when the data comes back...
+					
+					var data  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+					
+					
+					
+					if (request.status == 200) {
+						 var contents = "<table cellspacing='4'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
+						 for(i = 0; i < data.length; i++) {         // generate the HTML table
+							 if(data[i].major == "CIT"){
+								contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
+							 }                     
+						 }
+						 contents += "</table>";
+					
+						 document.querySelector('#result').innerHTML = contents;
+					}
+					else {
+						document.querySelector('#result').innerHTML = "There was an error.";
+					}
+			  }
+			  request.send(null);
+		 };
+		 //BUS Button
+		 document.querySelector('#btnBUS').onclick = function() {      // attach event handler to button
+				var request = new XMLHttpRequest();
+				request.open('GET', 'cit5students.json');                 // GET request for data
+	  
+				request.onload = function() {                       // when the data comes back...
 
-                
-                var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
-                var data = x;
-                
-                
-                if (request.status == 200) {
-                     var contents = "<table cellspacing='4'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
-                     for(i = 0; i < data.length; i++) {         // generate the HTML table
-                         if(data[i].major == "BUS"){
-                            contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
-                         }                     
-                     }
-                     contents += "</table>";
-                
-                     document.querySelector('#result').innerHTML = contents;
-                }
-                else {
-                    document.querySelector('#result').innerHTML = "There was an error.";
-                }
-          }
-          request.send(null);
-     };
-  });
-  </script>
-  </body>
-  </html>
+					
+					var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+					var data = x.filter(function(bus){return data[i].major == "BUS";};
+					
+					
+					if (request.status == 200) {
+						   var source   = document.getElementById('text-template').innerHTML;  // get template text
+						   var template = Handlebars.compile(source);                          // compile the template
+						   var html = template(data);   
+					
+						 document.querySelector('#result').innerHTML = contents;
+					}
+					else {
+						document.querySelector('#result').innerHTML = "There was an error.";
+					}
+			  }
+			  request.send(null);
+		 };
+	  });
+	  </script>
+	  </body>
+	  </html>

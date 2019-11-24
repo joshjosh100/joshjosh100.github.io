@@ -47,7 +47,7 @@
 						if (request.status == 200) {
 							   var source   = document.getElementById('text-template').innerHTML;  // get template text
 							   var template = Handlebars.compile(source);                          // compile the template
-							   var html = template(context);   
+							   var html = template(data);   
 						
 							 document.querySelector('#result').innerHTML = contents;
 						}
@@ -73,7 +73,7 @@
 						if (request.status == 200) {
 							   var source   = document.getElementById('text-template').innerHTML;  // get template text
 							   var template = Handlebars.compile(source);                          // compile the template
-							   var html = template(context);   
+							   var html = template(data);   
 						
 							 document.querySelector('#result').innerHTML = contents;
 						}

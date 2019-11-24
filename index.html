@@ -19,7 +19,7 @@
 		<script type="text/x-handlebars-template" id="text-template">
 		 <table cellspacing='12'>
 		  <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
-				{{#each data}}
+				{{#each rows}}
 					 <tr>
 						<td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
 					 </tr>
@@ -75,7 +75,7 @@
 							   var template = Handlebars.compile(source);                          // compile the template
 							   var html = template(data);   
 						
-							 document.querySelector('#result').innerHTML = contents;
+							 document.querySelector('#result').innerHTML = compiledTemplateText({ rows: data });
 						}
 						else {
 							document.querySelector('#result').innerHTML = "There was an error.";

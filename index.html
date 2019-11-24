@@ -23,9 +23,10 @@
                 var x  = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
                 var data = x
 
-                for x in data{ 
-                  if data[x].major != "CIT"){
-                      delete data[x]  
+                for(i = 0; i < data.length; i++) {
+                      
+                    if (data[i] != "CIT")
+                    {delete data[x] } 
                   }
                 if (request.status == 200) {
                      var contents = "<table cellspacing='4'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"

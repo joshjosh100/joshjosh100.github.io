@@ -25,8 +25,8 @@
 
                 for(i = 0; i < data.length; i++) {
                       
-                    if (data[i] != "CIT")
-                    {delete data[x] } 
+                    if (data[i] == "CIT")
+                    { data[x].pop() } 
                   }
                 if (request.status == 200) {
                      var contents = "<table cellspacing='4'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
